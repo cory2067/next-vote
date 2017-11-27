@@ -35,15 +35,6 @@ c = conn.cursor()
 votes = c.execute('SELECT * FROM results').fetchall()
 conn.close()
 
-"""
-result = [0,0]
-for vote in votes:
-	result[0] += ("Petra" in vote[1])
-	result[1] += ("Petra" not in vote[1])
-
-print '''<h1>Election Results</h1><div><p>PJ: {}, Other: {}</p><div>'''.format(result[0], result[1])
-"""
-
 print '''<style>
 html {
 	text-align: center;
@@ -67,7 +58,7 @@ for q in config['questions']:
 	print '<th>'+q['title']+'</th>'
 print '<th>Comment</th></tr></thead>'
 
-freq = ['','Total']
+freq = ['','<b>Total</b>']
 for n,q in enumerate(config['questions']):
 	i = n + 2
 	a = {}
