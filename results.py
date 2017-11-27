@@ -67,7 +67,7 @@ for q in config['questions']:
 	print '<th>'+q['title']+'</th>'
 print '<th>Comment</th></tr></thead>'
 
-freq = ['Total']
+freq = ['','Total']
 for n,q in enumerate(config['questions']):
 	i = n + 2
 	a = {}
@@ -76,10 +76,13 @@ for n,q in enumerate(config['questions']):
 			a[vote[i]] += 1
 		else:
 			a[vote[i]] = 1
-	freq.append(str(a)[1:-1])
+	out = ''
+	for k,v in sorted(a.items(), key=lambda t: -t[1]):
+		out += k + ': ' + str(v) + ',\n'
+	freq.append(out)
 freq.append('')
 
-for vote in votes+freq:
+for vote in votes+[freq]:
 	print '<tr>'
 	for q in vote[1:]:
 		print '<td>' + q + '</td>'
