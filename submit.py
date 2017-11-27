@@ -22,6 +22,14 @@ def alert(title, msg): # Show error message and quit
 	print data % (title, msg)
 	sys.exit(0)
 
+# Load the config file for the election
+with open('config.js') as f:
+    config = f.read()
+
+config = '\n'.join(config.split('\n')[1:]) #chop var definition
+config = json.loads(config)
+
+
 form = cgi.FieldStorage()
 vote = []
 for i,q in enumerate(config['questions']):
@@ -33,16 +41,10 @@ for i,q in enumerate(config['questions']):
 		vote.append(form[write])
 	else:
 		vote.append("Abstain")
+print vote
 
 if not kerb in residents:
 	alert("Voting Error", "You're not a Next resident!")
-
-# Load the config file for the election
-with open('config.js') as f:
-    config = f.read()
-
-config = '\n'.join(config.split('\n')[1:]) #chop var definition
-config = json.loads(config)
 
 def get_wing(kerb):
 	room = residents[kerb]
