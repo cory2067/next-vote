@@ -3,6 +3,7 @@ import os
 import os.path
 import csv
 import cgi
+import json
 import sqlite3
 import sys
 print "Content-type: text/html\nAccess-Control-Allow-Origin: *\n"
@@ -17,7 +18,7 @@ def alert(title, msg): # Show error message and quit
 
 # Load the config file for the election
 with open('config.js') as f:
-    config = f.read()
+	config = f.read()
 
 config = '\n'.join(config.split('\n')[1:]) #chop var definition
 config = json.loads(config)
@@ -28,7 +29,6 @@ if not kerb in nexec:
 
 if not os.path.isfile('results.db'):
 	alert("Voting Results", "No results to show.")
-	sys.exit(0)
 
 conn = sqlite3.connect("results.db")
 c = conn.cursor()
@@ -62,14 +62,14 @@ td, th {
     padding: 8px;
 }
 </style>'''
-print '<table><thead><tr><th>Wing</th>
+print '<table><thead><tr><th>Wing</th>'
 for q in config['questions']:
-	print '<td>'+q['title']+'</td>'
+	print '<th>'+q['title']+'</th>'
 print '<th>Comment</th></tr></thead>'
 
 for vote in votes:
-	print '<tr>'.
-	for q in vote[1:]
+	print '<tr>'
+	for q in vote[1:]:
 		print '<td>' + q + '</td>'
 	print '</tr>'
 print '</table>'
