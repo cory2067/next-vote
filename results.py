@@ -68,7 +68,8 @@ for q in config['questions']:
 print '<th>Comment</th></tr></thead>'
 
 freq = ['Total']
-for i,q in enumerate(config['questions']):
+for n,q in enumerate(config['questions']):
+	i = n + 2
 	a = {}
 	for vote in votes: #disgusting
 		if vote[i] in a:
@@ -76,9 +77,9 @@ for i,q in enumerate(config['questions']):
 		else:
 			a[vote[i]] = 1
 	freq.append(str(a)[1:-1])
-print freq
+freq.append('')
 
-for vote in votes:
+for vote in votes+freq:
 	print '<tr>'
 	for q in vote[1:]:
 		print '<td>' + q + '</td>'
