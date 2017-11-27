@@ -1,14 +1,20 @@
 var app = angular.module('voteApp', []);
 app.controller('VoteController', function($scope, $http) {
 
-    $scope.test = "Henlo";
-
     // Randomize order of voting options to ensure fairness
     for (var i=0; i<config.questions.length; i++) {
         var q = config.questions[i];
         if (q.shuffle) {
             q.options = shuffleArray(q.options);
         }
+    }
+
+    // verify that a user is in an appropriate wing to see this option
+    $scope.verify = function(option) {
+        if (option.wing) {
+            return option.wing == wing; // global var from form.html
+        }
+        return true; // not constrained to wing
     }
 
     $scope.vote = config; // global var from config.js

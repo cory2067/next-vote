@@ -25,4 +25,4 @@ else:
 	with open("form.html", "r") as f:
 		data = f.read()
 
-	print data % (kerb, get_wing(kerb))
+	print data % (get_wing(kerb), kerb)

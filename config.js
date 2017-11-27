@@ -101,5 +101,14 @@ var config = // Important newline so python script can parse valid JSON
             "shuffle": true,
             "write_in": true,
         },
+        {
+            "title": "Wingrep",
+            "options": [
+                {"title": "Audrey Saltzmann, Thomas Adebiyi, Michelle Tan", "wing": "2E"},
+                {"title": "Chelsea Ajunwa, Lydia Morales, Vincent Vasquez", "wing": "3E"},
+                {"title": "Agustin Garcia, Aaron Sipser, James Drayton", "wing": "3W"},
+            ],
+            "write_in": true,
+        },
     ],
 }

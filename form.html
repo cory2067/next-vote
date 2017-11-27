@@ -3,6 +3,7 @@
 
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+	<script>var wing="%s";</script>
 	<script src="config.js"></script>
 	<script src="vote.js"></script>
 	<meta charset="utf-8">
@@ -20,7 +21,7 @@
                 <h1>{{vote.title}}</h1>
             </div>
             <div id="form-val">
-                <p>Validated as Next resident: %s, from %s</p>
+                <p>Validated as Next resident: %s</p>
             </div>
 		    <div id="form-intro">
 				<p>{{vote.intro}}</p>
@@ -31,7 +32,7 @@
             <div ng-repeat="q in vote.questions" class="form-row">
                 <label><span>{{$index + 1}}. {{q.title}}</span></label>
                 <div class="form-radio-buttons">
-                    <div ng-repeat="o in q.options">
+                    <div ng-repeat="o in q.options" ng-if="verify(o)">
                         <label>
 							<div class="desc" ng-if="o.description">{{o.description}}</div>
                             <input type="radio" name="q{{$parent.$index}}" value="{{o.title ? o.title : o}}">
