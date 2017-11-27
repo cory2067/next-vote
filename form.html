@@ -32,14 +32,16 @@
             <div ng-repeat="q in vote.questions" class="form-row">
                 <label><span>{{$index + 1}}. {{q.title}}</span></label>
                 <div class="form-radio-buttons">
-                    <div ng-repeat="o in q.options" ng-if="verify(o)">
-                        <label>
-							<div class="desc" ng-if="o.description">{{o.description}}</div>
-                            <input type="radio" name="q{{$parent.$index}}" value="{{o.title ? o.title : o}}">
-                            <span>{{o.title ? o.title : o}}</span>
-                        </label>
-						<div ng-if="o.description" style="height: 15px">
-                    	</div>
+                    <div ng-repeat="o in q.options">
+						<div ng-if="verify(o)">
+	                        <label>
+								<div class="desc" ng-if="o.description">{{o.description}}</div>
+	                            <input type="radio" name="q{{$parent.$parent.$index}}" value="{{o.title ? o.title : o}}">
+	                            <span>{{o.title ? o.title : o}}</span>
+	                        </label>
+							<div ng-if="o.description" style="height: 15px">
+	                    	</div>
+						</div>
                 	</div>
 					<div ng-if="q.write_in">
 						<label>
@@ -49,7 +51,7 @@
 					</div>
 				</div>
 
-				<div ng-if="q.write_in" class="form-row">
+				<div ng-if="q.write_in" class="form-row writein">
 	                <label>
 	                    <span>Write-in Candidate (if applicable):</span>
 	                    <input name="write{{$index}}"></input>

@@ -81,6 +81,10 @@ iframe{
     padding: 0 0 12px;
 }
 
+.writein {
+    margin-top: 10px;
+}
+
 .form input, .form textarea{
     color:  #5f5f5f;
     box-sizing: border-box;
