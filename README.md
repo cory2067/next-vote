@@ -2,6 +2,7 @@
 Easily configurable voting system for Next House
 
 Obtain a copy of `residents.csv` and drop it in this folder. This file must be updated every time the Next House roster changes. Ask the Housing Chair.
+Also, make sure you keep updated `nexec` in `results.py` when Next Exec changes.
 
 # Configuration
 The only file you need to modify is `config.js`. Many parameters should be self-explanatory, but I'll describe those which might not be clear:
