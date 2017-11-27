@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Next House Vote</title>
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-content">
+        <form class="form" method="post" action="submit.py">
+            <div class="form-title-row">
+                <h1>Fall 2017 Bylaws Vote</h1>
+            </div>
+            <div id="form-val">
+                <p>Validated as Next resident: {kerb}</p>
+            </div>
+		    <div id="form-intro">
+				<p>There are 5 sections of bylaws changes and a total of 8 questions. For each question, please review the proposed addition or change to the bylaws and vote “yes” or “no” on whether Next House should adopt it.</p>
+		    </div>
+
+			<iframe src="https://docs.google.com/document/d/e/2PACX-1vShtF-VwIiyhKNs5LP8CHlNMQBzj4BMfvYAiVx-hXyRPTEjI1c17scIEMsvK7ciHjf8zEOYEB4tiC_q/pub?embedded=true"></iframe>
+
+            <div class="form-row">
+                <label><span>1. Shall we adopt Article VI, Section 1.B: Triples, and the corresponding additions to Section 3: Squatting and Section 7.B: Decrowding?</span></label>
+                <div class="form-radio-buttons">
+
+                    <div>
+                        <label>
+                            <input type="radio" name="choice1" value="yes">
+                            <span>Yes</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input type="radio" name="choice1" value="no">
+                            <span>No</span>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label><span>2. Shall we adopt Article VIII, Section 1: [Student Group] Designation?</span></label>
+                <div class="form-radio-buttons">
+
+                    <div>
+                        <label>
+                            <input type="radio" name="choice2" value="yes">
+                            <span>Yes</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input type="radio" name="choice2" value="no">
+                            <span>No</span>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <label>
+                    <span>Comments</span>
+                    <textarea rows="4" name="comment"></textarea>
+                </label>
+            </div>
+
+
+            <div class="form-row">
+                <button type="submit">Submit</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
