@@ -1,7 +1,7 @@
 # next-vote
 Easily configurable voting system for Next House
 
-Obtain a copy of `residents.csv` and drop it in this folder.
+Obtain a copy of `residents.csv` and drop it in this folder. This file must be updated every time the Next House roster changes. Ask the Housing Chair.
 
 # Configuration
 The only file you need to modify is `config.js`. Many parameters should be self-explanatory, but I'll describe those which might not be clear:
@@ -12,3 +12,6 @@ The only file you need to modify is `config.js`. Many parameters should be self-
     - `question.option.title`: Title of this option
     - `question.option.description`: A body of text (like a platform) above the option
     - `question.option.wing`: Show option only if user's wing equals this. (Format as "2E", "4W", etc.)
+
+Once you make changes, run `validate.py` to make sure this is not malformed json.
+**Remember to delete results.db when creating a new election**
