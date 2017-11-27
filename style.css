@@ -16,6 +16,11 @@ html{
     text-align: center;
 }
 
+.desc {
+    font-weight: 300;
+    color: #222;
+}
+
 .form .form-row{
     text-align: left;
     max-width: 550px;
