@@ -35,13 +35,16 @@ vote = []
 for i,q in enumerate(config['questions']):
 	field = 'q' + str(i)
 	write = 'write' + str(i)
-	if field in form and form['field'] != 'write':
-		vote.append(form[field])
-	elif write in form and form[write] != '':
-		vote.append(form[write])
+	if field in form and form[field].value != 'write':
+		vote.append(form[field].value)
+	elif write in form and form[write].value != '':
+		vote.append(form[write].value)
 	else:
 		vote.append("Abstain")
-print vote
+
+comment = ''
+if 'comment' in form:
+	comment = form['comment'].value
 
 if not kerb in residents:
 	alert("Voting Error", "You're not a Next resident!")
@@ -59,23 +62,22 @@ c = conn.cursor()
 nstr = ''
 qstr = ''
 for i,q in enumerate(config['questions']):
-	nstr += q + int(i) + ' text, '
+	nstr += 'q' + str(i) + ' text, '
 	qstr += '?,'
 nstr = nstr[:-2]
 qstr = qstr[:-1]
-print(nstr)
-print(qstr)
 
-sys.exit(0)
+
 if init:
-	c.execute("CREATE TABLE results (name text, wing text, vote text)")
+	c.execute("CREATE TABLE results (name text, wing text, "+nstr+",comment text)")
 	conn.commit()
 
 voted = c.execute('SELECT * FROM results WHERE name=?', (kerb,)).fetchall()
 if len(voted):
 	alert("Voting Error", "You've already voted.")
 
-c.execute('INSERT INTO results VALUES (?,?,?)', (kerb, get_wing(kerb), vote))
+t = tuple([kerb, get_wing(kerb)] + vote + [comment])
+c.execute('INSERT INTO results VALUES (?,?,?,'+qstr+')', t)
 conn.commit()
 conn.close()
 
