@@ -32,6 +32,11 @@ iframe{
 	text-align: center;
 }
 
+#form-err {
+	text-align: center;
+    font-size:1.5em;
+}
+
 #form-intro {
 	text-align: left;
 	max-width: 550px;
