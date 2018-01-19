@@ -1,34 +1,20 @@
 #!/usr/bin/python
 import os
 import os.path
-import csv
 import cgi
-import json
 import sqlite3
-import sys
+import util
 print "Content-type: text/html\nAccess-Control-Allow-Origin: *\n"
 kerb = os.environ['SSL_CLIENT_S_DN_Email'].split('@')[0]
 
-def alert(title, msg): # Show error message and quit
-	with open("alert.html", "r") as f:
-		data = f.read()
-
-	print data % (title, msg)
-	sys.exit(0)
-
-# Load the config file for the election
-with open('config.js') as f:
-	config = f.read()
-
-config = '\n'.join(config.split('\n')[1:]) #chop var definition
-config = json.loads(config)
+config = util.load_config()
 
 nexec = ['nenright','mfarejow','cyntlo','cor','bbarajas','jynnie','wpinney','jryang','gfarrell','nmyrie','shavinac']
 if not kerb in nexec:
-	alert('Error 403', "Only members of Next Exec can view results.")
+	util.alert('Error 403', "Only members of Next Exec can view results.")
 
 if not os.path.isfile('results.db'):
-	alert("Voting Results", "No results to show.")
+	util.alert("Voting Results", "No results to show.")
 
 conn = sqlite3.connect("results.db")
 c = conn.cursor()
@@ -59,12 +45,12 @@ for q in config['questions']:
 print '<th>Comment</th></tr></thead>'
 
 freq = ['','<b>Total</b>']
-for n,q in enumerate(config['questions']):
-	i = n + 2
+# Iterate through all question IDs
+for i in range(2, 2+len(config['questions'])):
 	a = {}
-	for vote in votes: #disgusting
+	for vote in votes:
 		if vote[i] in a:
-			a[vote[i]] += 1
+			a[vote[i]] += 1 #tally up votes
 		else:
 			a[vote[i]] = 1
 	out = ''

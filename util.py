@@ -16,7 +16,7 @@ def render(template, params):
 	print data % params
 
 def alert(title, msg): # Show error message and quit
-	print render('alert.html', (title, msg))
+	render('alert.html', (title, msg))
 	sys.exit(0)
 
 '''
