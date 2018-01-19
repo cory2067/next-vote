@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import os
-import csv
 import util
 print "Content-type: text/html\nAccess-Control-Allow-Origin: *\n"
 kerb = os.environ['SSL_CLIENT_S_DN_Email'].split('@')[0]
