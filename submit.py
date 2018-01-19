@@ -44,14 +44,14 @@ qstr = qstr[:-1]
 
 
 if init: #if the database doesn't exist yet
-	c.execute("CREATE TABLE results (name text, wing text, "+nstr+",comment text)")
+	c.execute("CREATE TABLE results (name text unique, wing text, "+nstr+",comment text)")
 	conn.commit()
 
 voted = c.execute('SELECT * FROM results WHERE name=?', (kerb,)).fetchall()
 if len(voted):
 	util.alert("Voting Error", "You've already voted.")
 
-t = tuple([kerb, get_wing(kerb)] + vote + [comment]) # compile together name, votes, comment
+t = tuple([kerb, util.get_wing(kerb)] + vote + [comment]) # compile together name, votes, comment
 c.execute('INSERT INTO results VALUES (?,?,?,'+qstr+')', t)
 conn.commit()
 conn.close()
