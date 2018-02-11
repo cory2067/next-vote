@@ -43,3 +43,6 @@ def get_wing(kerb):
 
 def valid_resident(kerb):
 	return kerb in residents
+
+def sanitize(text):
+	return text.replace('<', '&lt;').replace('>', '&gt;')

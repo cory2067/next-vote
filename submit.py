@@ -19,13 +19,13 @@ for i,q in enumerate(config['questions']):
 	if field in form and form[field].value != 'write':
 		vote.append(form[field].value) # handle normal votes
 	elif write in form and form[write].value != '':
-		vote.append(form[write].value) # handle write in
+		vote.append(util.sanitize(form[write].value)) # handle write in
 	else:
 		vote.append("Abstain") # if no valid input specified
 
 comment = ''
 if 'comment' in form:
-	comment = form['comment'].value
+	comment = util.sanitize(form['comment'].value)
 
 if not util.valid_resident(kerb):
 	util.alert("Voting Error", "You're not a Next resident!")
