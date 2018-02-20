@@ -9,7 +9,7 @@ kerb = os.environ['SSL_CLIENT_S_DN_Email'].split('@')[0]
 
 config = util.load_config()
 
-nexec = ['nenright','mfarejow','cyntlo','cor','bbarajas','jynnie','wpinney','jryang','gfarrell','nmyrie','shavinac']
+nexec = ['blairaw','mfarejow','jryang','cor','bbarajas','jynnie','wpinney','bnnguyen','petrah','nmyrie','marydahl']
 if not kerb in nexec:
 	util.alert('Error 403', "Only members of Next Exec can view results.")
 
